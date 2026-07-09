@@ -253,8 +253,14 @@ main {
   flex: 1;
   padding: 10px;
   background: transparent;
-  cursor: default;
+  cursor: pointer;
+  transition: transform 0.25s ease;
 }
+
+.venue-feature-item:hover {
+  transform: translateY(-4px);
+}
+
 
 .venue-divider {
   position: absolute;
@@ -269,11 +275,22 @@ main {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #f1f5f9;
+  background-color: #e0f2fe;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.venue-feature-item:hover .venue-icon-circle {
+  background-color: #38bdf8;
+  transform: scale(1.12);
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.4);
+}
+
+.venue-feature-item:hover .venue-icon-circle svg {
+  filter: brightness(0) invert(1);
 }
 
 .venue-icon {

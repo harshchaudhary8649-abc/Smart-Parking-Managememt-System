@@ -5,7 +5,7 @@ echo.
 echo Backend:  http://localhost:5000
 echo Frontend: http://localhost:5173
 echo.
-start "Smart Parking Backend" cmd /k "cd /d %~dp0backend && npm start"
+start "Smart Parking Backend" cmd /k "cd /d %~dp0backend && .venv\Scripts\python.exe manage.py runserver 5000"
 start "Smart Parking Frontend" cmd /k "cd /d %~dp0frontend && npm run dev"
 echo Open http://localhost:5173 in your browser.
 pause

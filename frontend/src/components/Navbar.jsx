@@ -26,6 +26,7 @@ export default function Navbar({ user, onLogout }) {
           <nav className="nav-desktop">
             <NavLink to="/slots">Slots</NavLink>
             <NavLink to="/ticket">Ticket</NavLink>
+            <NavLink to="/about">About</NavLink>
             {user && <NavLink to="/dashboard">My Bookings</NavLink>}
             {user?.role === "admin" && <NavLink to="/admin">Admin</NavLink>}
           </nav>
@@ -55,6 +56,7 @@ export default function Navbar({ user, onLogout }) {
       <nav className={`nav-mobile ${menuOpen ? "nav-open" : ""}`}>
         <NavLink to="/slots" onClick={() => setMenuOpen(false)}>Slots</NavLink>
         <NavLink to="/ticket" onClick={() => setMenuOpen(false)}>Ticket</NavLink>
+        <NavLink to="/about" onClick={() => setMenuOpen(false)}>About</NavLink>
         {user && <NavLink to="/dashboard" onClick={() => setMenuOpen(false)}>My Bookings</NavLink>}
         {user?.role === "admin" && <NavLink to="/admin" onClick={() => setMenuOpen(false)}>Admin</NavLink>}
       </nav>

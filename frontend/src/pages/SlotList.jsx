@@ -55,9 +55,7 @@ export default function SlotList({ auth }) {
       <div className="page-header" style={{ marginBottom: "30px" }}>
         <div>
           <p className="eyebrow">Smart Parking Management</p>
-          <h2>
-            {venue === "all" ? "Select Venue" : `${venue} Parking`}
-          </h2>
+          <h2>{venue === "all" ? "Select Venue" : `${venue} Parking`}</h2>
         </div>
         {venue !== "all" && (
           <button className="ghost-button" onClick={() => setVenue("all")}>
@@ -69,7 +67,6 @@ export default function SlotList({ auth }) {
       {loading ? (
         <p className="muted">Loading slots...</p>
       ) : venue === "all" && !isAdmin ? (
-        // For normal users, show the 4 venue sections
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "24px", marginTop: "10px" }}>
           {["Mall", "Hotel", "School", "Hospital"].map((name) => {
             const details = venueDetails[name];
@@ -79,42 +76,20 @@ export default function SlotList({ auth }) {
                 key={name}
                 onClick={() => setVenue(name)}
                 style={{
-                  padding: "24px",
-                  borderRadius: "12px",
-                  background: "#ffffff",
-                  border: "1px solid #dce7f0",
-                  boxShadow: "0 10px 25px rgba(43,61,87,0.05)",
-                  cursor: "pointer",
-                  transition: "transform 0.2s ease, border-color 0.2s ease",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "12px",
+                  padding: "24px", borderRadius: "12px", background: "#ffffff",
+                  border: "1px solid #dce7f0", boxShadow: "0 10px 25px rgba(43,61,87,0.05)",
+                  cursor: "pointer", transition: "transform 0.2s ease, border-color 0.2s ease",
+                  display: "flex", flexDirection: "column", gap: "12px",
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.borderColor = "#127c71";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "none";
-                  e.currentTarget.style.borderColor = "#dce7f0";
-                }}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.borderColor = "#127c71"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = "none"; e.currentTarget.style.borderColor = "#dce7f0"; }}
               >
                 <div style={{ fontSize: "3rem" }}>{details.emoji}</div>
                 <div>
                   <h3 style={{ fontSize: "1.5rem", margin: "0 0 4px 0", color: "#0d1728" }}>{name}</h3>
                   <p style={{ fontSize: "0.9rem", color: "#68778a", margin: 0 }}>{details.desc}</p>
                 </div>
-                <div
-                  style={{
-                    marginTop: "auto",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    background: available > 0 ? "#e6f7ee" : "#ffe8e8",
-                    color: available > 0 ? "#177245" : "#9a3030",
-                    fontWeight: "bold",
-                    textAlign: "center",
-                  }}
-                >
+                <div style={{ marginTop: "auto", padding: "10px", borderRadius: "8px", background: available > 0 ? "#e6f7ee" : "#ffe8e8", color: available > 0 ? "#177245" : "#9a3030", fontWeight: "bold", textAlign: "center" }}>
                   {available > 0 ? `${available} Spaces Free` : "Fully Booked"}
                 </div>
               </div>
@@ -122,16 +97,13 @@ export default function SlotList({ auth }) {
           })}
         </div>
       ) : (
-        // Showing slots for selected venue (or Admin viewing all)
         <div>
           {isAdmin && venue === "all" && (
             <div style={{ marginBottom: "20px", padding: "12px", background: "#eef4f8", borderRadius: "8px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontWeight: "bold" }}>Admin Mode: Viewing All Venues</span>
               <div style={{ display: "flex", gap: "8px" }}>
                 {["Mall", "Hotel", "School", "Hospital"].map((v) => (
-                  <button key={v} className="ghost-button" style={{ minHeight: "34px", padding: "4px 12px" }} onClick={() => setVenue(v)}>
-                    {v}
-                  </button>
+                  <button key={v} className="ghost-button" style={{ minHeight: "34px", padding: "4px 12px" }} onClick={() => setVenue(v)}>{v}</button>
                 ))}
               </div>
             </div>

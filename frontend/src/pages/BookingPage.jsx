@@ -73,31 +73,86 @@ export default function BookingPage({ auth }) {
 
   if (booking) {
     return (
-      <section className="page narrow">
-        <div className="ticket-card">
-          <p className="eyebrow">Booking confirmed</p>
-          <h2>Ticket Generated</h2>
-          <img className="qr" src={booking.qrCode} alt="Ticket QR" />
-          <p className="ticket-code">{booking.ticketCode}</p>
-          <div className="ticket-details">
-            <span>Slot / Floor</span>
-            <strong>{booking.slotLabel} ({booking.venue})</strong>
-            <span>Vehicle</span>
-            <strong>{booking.vehicleNumber} ({booking.vehicleType})</strong>
-            <span>Payment Method</span>
-            <strong>{booking.paymentMethod}</strong>
-            {booking.paymentDetails && (
-              <>
-                <span>Payment Info</span>
-                <strong>{booking.paymentDetails}</strong>
-              </>
-            )}
-            <span>Amount</span>
-            <strong>Rs {booking.amount}</strong>
+      <section className="page" style={{ maxWidth: "1000px", margin: "0 auto", padding: "20px" }}>
+        <div style={{ display: "flex", gap: "30px", flexWrap: "wrap", justifyContent: "center", alignItems: "stretch" }}>
+          
+          {/* Ticket Card */}
+          <div className="ticket-card" style={{ flex: "1", minWidth: "320px", maxWidth: "450px", margin: 0 }}>
+            <p className="eyebrow">Booking confirmed</p>
+            <h2>Ticket Generated</h2>
+            <img className="qr" src={booking.qrCode} alt="Ticket QR" />
+            <p className="ticket-code">{booking.ticketCode}</p>
+            <div className="ticket-details">
+              <span>Slot / Floor</span>
+              <strong>{booking.slotLabel} ({booking.venue})</strong>
+              <span>Vehicle</span>
+              <strong>{booking.vehicleNumber} ({booking.vehicleType})</strong>
+              <span>Payment Method</span>
+              <strong>{booking.paymentMethod}</strong>
+              {booking.paymentDetails && (
+                <>
+                  <span>Payment Info</span>
+                  <strong>{booking.paymentDetails}</strong>
+                </>
+              )}
+              <span>Amount</span>
+              <strong>Rs {booking.amount}</strong>
+            </div>
+            <button className="primary-button wide" onClick={() => navigate("/dashboard")}>
+              Go to Dashboard
+            </button>
           </div>
-          <button className="primary-button wide" onClick={() => navigate("/dashboard")}>
-            Go to Dashboard
-          </button>
+
+          {/* About / Features Card */}
+          <div className="form-card" style={{ flex: "1", minWidth: "320px", maxWidth: "450px", height: "fit-content", padding: "30px", background: "rgba(255, 255, 255, 0.9)", backdropFilter: "blur(10px)", border: "1px solid #e2e8f0", margin: 0 }}>
+            <p className="eyebrow" style={{ color: "#3b82f6" }}>System Info</p>
+            <h2 style={{ fontSize: "1.5rem", marginBottom: "20px" }}>About Smart Parking</h2>
+            <ul style={{ display: "flex", flexDirection: "column", gap: "16px", paddingLeft: "0", listStyleType: "none", margin: 0, textAlign: "left" }}>
+              <li style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+                <span style={{ color: "#3b82f6", fontWeight: "bold" }}>✓</span>
+                <div>
+                  <strong style={{ display: "block", color: "#1e293b" }}>Real-time Slot Availability</strong>
+                  <span style={{ fontSize: "0.85rem", color: "#64748b" }}>Live slot monitoring across Mall, Hotel, School, and Hospital venues.</span>
+                </div>
+              </li>
+              <li style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+                <span style={{ color: "#3b82f6", fontWeight: "bold" }}>✓</span>
+                <div>
+                  <strong style={{ display: "block", color: "#1e293b" }}>Multi-Vehicle Support</strong>
+                  <span style={{ fontSize: "0.85rem", color: "#64748b" }}>Separate rate and capacity calculations for Cars and Bikes.</span>
+                </div>
+              </li>
+              <li style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+                <span style={{ color: "#3b82f6", fontWeight: "bold" }}>✓</span>
+                <div>
+                  <strong style={{ display: "block", color: "#1e293b" }}>Flexible Payment Modes</strong>
+                  <span style={{ fontSize: "0.85rem", color: "#64748b" }}>Supports UPI QR Codes, RFID cards, Contactless Cards, and Cash.</span>
+                </div>
+              </li>
+              <li style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+                <span style={{ color: "#3b82f6", fontWeight: "bold" }}>✓</span>
+                <div>
+                  <strong style={{ display: "block", color: "#1e293b" }}>Overtime Penalty System</strong>
+                  <span style={{ fontSize: "0.85rem", color: "#64748b" }}>Automatically charges ₹5/hour penalty if parking exceeds booked duration.</span>
+                </div>
+              </li>
+              <li style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+                <span style={{ color: "#3b82f6", fontWeight: "bold" }}>✓</span>
+                <div>
+                  <strong style={{ display: "block", color: "#1e293b" }}>Visual Admin Dashboard</strong>
+                  <span style={{ fontSize: "0.85rem", color: "#64748b" }}>Admin controls to manage slots, view total occupancy, and track real-time revenue.</span>
+                </div>
+              </li>
+              <li style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+                <span style={{ color: "#3b82f6", fontWeight: "bold" }}>✓</span>
+                <div>
+                  <strong style={{ display: "block", color: "#1e293b" }}>QR Ticket Verification</strong>
+                  <span style={{ fontSize: "0.85rem", color: "#64748b" }}>Verify and validate active tickets at entry/exit gates instantly.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
         </div>
       </section>
     );

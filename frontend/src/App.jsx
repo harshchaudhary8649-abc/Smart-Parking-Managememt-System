@@ -10,6 +10,7 @@ import Register from "./pages/Register.jsx";
 import SlotList from "./pages/SlotList.jsx";
 import TicketChecker from "./pages/TicketChecker.jsx";
 import UserDashboard from "./pages/UserDashboard.jsx";
+import About from "./pages/About.jsx";
 import api, { getErrorMessage } from "./services/api.js";
 
 function ProtectedRoute({ user, children, adminOnly = false }) {
@@ -92,6 +93,7 @@ export default function App() {
             }
           />
           <Route path="/ticket" element={<TicketChecker />} />
+          <Route path="/about" element={<About />} />
           <Route
             path="/admin"
             element={
